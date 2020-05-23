@@ -1,5 +1,4 @@
 import {config} from 'dotenv';
-const pkg = require('./package.json');
 
 // Load environment variables from .env file
 config();
@@ -11,7 +10,7 @@ const configs = {
     ENV: env,
     DEV: env === envDevelopmentName,
     // General
-    NAME: process.env.APP_NAME || pkg.name,
+    NAME: process.env.APP_NAME || 'nestjs-es',
     TITLE: process.env.APP_TITLE || 'Users',
     DESCRIPTION: process.env.APP_DESCRIPTION || 'Users API Microservice',
     // API
