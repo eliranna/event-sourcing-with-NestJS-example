@@ -12,20 +12,15 @@ We use **Node.js**, **NestJS** and **TypeScript**. The Event Store implementatio
 [eventstore.org]: https://eventstore.org/
 
 ### Data-flow
-As a new `Command` arrives from a device, it is received by a Command Handler, which validates it and triggers a change in the domain model. This change is being reflected by the creation of a corresponding Event, which, in turn, is being stored in the events-store. The Event Store acts as a messaging bus, as it propagates the Event to the Read Model. Then, the propagated Event is being picked-up by various subscribers, which propagates it further to a denormalized data-store.
+As a new **Command** arrives from a device, it is received by a **Command Handler**, which validates it and triggers a change in the **Domain Model**. This change is being reflected by the creation of a corresponding **Event**, which, in turn, is being stored in the **Event-Store**. The Event Store acts as a messaging bus, as it propagates the Event to the **Read Model**. Then, the propagated Event is being picked-up by various subscribers, which propagates it further to a **denormalized data-store**.
 
 
 
-
-## Installation
+# Running the app
 
 ```bash
 $ npm install
-```
 
-## Running the app
-
-```bash
 # development
 $ npm run start
 
@@ -36,7 +31,8 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
+
+### Test
 
 ```bash
 # unit tests
