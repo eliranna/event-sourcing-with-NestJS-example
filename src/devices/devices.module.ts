@@ -1,11 +1,11 @@
-import { CommandBus, EventBus, CqrsModule } from '@nestjs/cqrs';
+import { CommandBus, EventBus, CQRSModule } from '@nestjs/cqrs';
 import { OnModuleInit, Module } from '@nestjs/common';
 import { ModuleRef } from '@nestjs/core';
 import { EventStoreModule } from '../core/event-store/event-store.module'
 
 @Module({
   imports: [
-    CqrsModule,
+    CQRSModule,
     EventStoreModule.forFeature(),
   ],
 })
