@@ -4,7 +4,10 @@ This is a sample code created for [this blog post].
 
 # Description
 
-In this example, we outline the Write Model of an event-sourced IoT platform. We use Event-sourcing as our data-persistens pattern, and seperate the Read-Model from the Write-Model using the CQRS pattern, while also appling Domain-Driven Development principles. 
+In this example, we outline the Write Model of an event-sourced IoT platform. We use Event-sourcing as our data-persistence pattern, and separate the Read-Model from the Write-Model using the CQRS pattern, while also applying Domain-Driven Development principles.
+
+### Scope
+This sample only includes the functionality needed for connecting a new device to the platform. 
 
 ### Stack
 We use **Node.js**, **NestJS** and **TypeScript**. The Event Store implementation is based on the one from [eventstore.org]. 
