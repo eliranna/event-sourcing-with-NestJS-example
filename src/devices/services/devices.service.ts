@@ -8,9 +8,6 @@ export class DevicesService {
   constructor(private readonly commandBus: CommandBus) {}
 
   async createDevice(device: DeviceDto) {
-    return await this.commandBus.execute(
-      new CreateDeviceCommand(device),
-    );
+    return await this.commandBus.execute(new CreateDeviceCommand(device));
   }
-
 }

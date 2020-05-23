@@ -1,4 +1,9 @@
-import { Injectable, Inject, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
+import {
+  Injectable,
+  Inject,
+  OnModuleDestroy,
+  OnModuleInit,
+} from '@nestjs/common';
 import { IEventPublisher } from '@nestjs/cqrs/dist/interfaces/events/event-publisher.interface';
 import { IMessageSource } from '@nestjs/cqrs/dist/interfaces/events/message-source.interface';
 import { IEvent } from '@nestjs/cqrs/dist/interfaces/events/event.interface';
@@ -7,7 +12,8 @@ import * as xml2js from 'xml2js';
 import * as http from 'http';
 import { configObj as config } from '../../../config';
 
-const eventStoreHostUrl = config.EVENT_STORE_SETTINGS.protocol +
+const eventStoreHostUrl =
+  config.EVENT_STORE_SETTINGS.protocol +
   `://${config.EVENT_STORE_SETTINGS.hostname}:${config.EVENT_STORE_SETTINGS.httpPort}/streams/`;
 
 /**
@@ -52,13 +58,15 @@ export class EventStore implements IEventPublisher, IMessageSource {
   async bridgeEventsTo<T extends IEvent>(subject: Subject<T>) {
     const streamName = `$ce-${this.category}`;
 
-    const onEvent = async (event) => {
-      const eventUrl = eventStoreHostUrl +
-        `${event.metadata.$o}/${event.data.split('@')[0]}`;
-      http.get(eventUrl, (res) => {
+    const onEvent = async event => {
+      const eventUrl =
+        eventStoreHostUrl + `${event.metadata.$o}/${event.data.split('@')[0]}`;
+      http.get(eventUrl, res => {
         res.setEncoding('utf8');
         let rawData = '';
-        res.on('data', (chunk) => { rawData += chunk; });
+        res.on('data', chunk => {
+          rawData += chunk;
+        });
         res.on('end', () => {
           xml2js.parseString(rawData, (err, result) => {
             if (err) {
@@ -80,7 +88,12 @@ export class EventStore implements IEventPublisher, IMessageSource {
     };
 
     try {
-      await this.eventStore.client.subscribeToStream(streamName, onEvent, onDropped, false);
+      await this.eventStore.client.subscribeToStream(
+        streamName,
+        onEvent,
+        onDropped,
+        false,
+      );
     } catch (err) {
       console.trace(err);
     }

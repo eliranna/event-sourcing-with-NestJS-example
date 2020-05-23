@@ -1,4 +1,8 @@
-import { Controller, Get, Post, Param, Body, Delete, Put } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+} from '@nestjs/common';
 import { ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { DeviceDto } from '../dtos/device.dto';
 import { DevicesService } from '../services/devices.service';
@@ -6,12 +10,12 @@ import { DevicesService } from '../services/devices.service';
 @Controller('devices')
 @ApiUseTags('Devices')
 export class DevicesController {
-  constructor(private readonly devicesService: DevicesService) { }
-  
+  constructor(private readonly devicesService: DevicesService) {}
+
   @ApiOperation({ title: 'Create Device' })
   @ApiResponse({ status: 200, description: 'Create Device.' })
   @Post()
   async createDevice(@Body() deviceDto: DeviceDto): Promise<DeviceDto> {
-    return this.devicesService.createDevice({...deviceDto});
+    return this.devicesService.createDevice({ ...deviceDto });
   }
 }

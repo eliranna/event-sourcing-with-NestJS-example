@@ -2,8 +2,7 @@ import { IEventHandler, EventsHandler } from '@nestjs/cqrs';
 import { DeviceCreatedEvent } from '../events/device-created.event';
 
 @EventsHandler(DeviceCreatedEvent)
-export class DeviceCreatedHandler
-  implements IEventHandler<DeviceCreatedEvent> {
+export class DeviceCreatedHandler implements IEventHandler<DeviceCreatedEvent> {
   handle(event: DeviceCreatedEvent) {
     /*
       This is were we send events to the Read Model.

@@ -4,9 +4,8 @@ import { Device } from '../models/device.model';
 
 @Injectable()
 export class DeviceRepository {
-  
   _generateId() {
-    // Its just a simplefication. Here we should fetch the next avaliable Id from a datastore. 
+    // Its just a simplefication. Here we should fetch the next avaliable Id from a datastore.
     return `${Math.floor(Math.random() * (999 - 100 + 1) + 100)}`;
   }
 

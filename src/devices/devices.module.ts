@@ -11,10 +11,7 @@ import { DeviceCreatedHandler } from './event-handlers/device-created.handler';
 import { DeviceRepository } from './repository/device.repository';
 
 @Module({
-  imports: [
-    CQRSModule,
-    EventStoreModule.forFeature(),
-  ],
+  imports: [CQRSModule, EventStoreModule.forFeature()],
   controllers: [DevicesController],
   providers: [
     DevicesService,
@@ -32,7 +29,6 @@ export class DevicesModule implements OnModuleInit {
   ) {}
 
   onModuleInit() {
-
     /*
       NestJS allows us to run custom logic on module load using the onModuleInit hook. 
       This is a chance to do general assignments, depending on our EventStore implementation, 
@@ -42,16 +38,11 @@ export class DevicesModule implements OnModuleInit {
     this.command$.setModuleRef(this.moduleRef);
     this.event$.setModuleRef(this.moduleRef);
     this.eventStore.setEventHandlers({
-      UserCreatedEvent: (data) => new DeviceCreatedEvent(data),
+      UserCreatedEvent: data => new DeviceCreatedEvent(data),
     });
     this.eventStore.bridgeEventsTo((this.event$ as any).subject$);
     this.event$.publisher = this.eventStore;
-    this.event$.register([
-      DeviceCreatedHandler
-    ]);
-    this.command$.register([
-      CreateDeviceHandler
-    ]);
+    this.event$.register([DeviceCreatedHandler]);
+    this.command$.register([CreateDeviceHandler]);
   }
-
 }

@@ -29,12 +29,8 @@ export class EventStoreModule {
   static forFeature(): DynamicModule {
     return {
       module: EventStoreModule,
-      providers: [
-        EventStore,
-      ],
-      exports: [
-        EventStore,
-      ],
+      providers: [EventStore],
+      exports: [EventStore],
     };
   }
 }
