@@ -25,9 +25,12 @@
     "@nestjs/core": "^7.0.0",
     "@nestjs/cqrs": "^7.0.0",
     "@nestjs/platform-express": "^7.0.0",
+    "dotenv": "^8.2.0",
+    "geteventstore-promise": "^3.2.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^6.5.4"
+    "rxjs": "^6.5.4",
+    "xml2js": "^0.4.23"
   },
   "devDependencies": {
     "@nestjs/cli": "^7.0.0",
