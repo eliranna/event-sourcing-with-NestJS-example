@@ -1,6 +1,6 @@
 This is a sample code created for [this blog post].
 
-[this blog post]: https://www.upnext.blog/chasing-drones-with-graphql
+[this blog post]: https://www.upnext.blog/event-sourcing-with-nestjs
 
 # Description
 
