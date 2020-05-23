@@ -13,7 +13,7 @@ const eventStoreHostUrl = config.EVENT_STORE_SETTINGS.protocol +
 /**
  * @class EventStore
  * @description The EventStore.org bridge. By design, the domain category
- * (i.e. user) events are being subscribed to. Upon events being received,
+ * (i.e. device) events are being subscribed to. Upon events being received,
  * internal event handlers are responsible for the handling of events.
  */
 @Injectable()
@@ -23,7 +23,7 @@ export class EventStore implements IEventPublisher, IMessageSource {
   private category: string;
 
   constructor(@Inject('EVENT_STORE_PROVIDER') eventStore: any) {
-    this.category = 'users';
+    this.category = 'devices';
     this.eventStore = eventStore;
     this.eventStore.connect({
       hostname: config.EVENT_STORE_SETTINGS.hostname,
@@ -35,8 +35,8 @@ export class EventStore implements IEventPublisher, IMessageSource {
 
   async publish<T extends IEvent>(event: T) {
     const message = JSON.parse(JSON.stringify(event));
-    const userId = message.userId || message.userDto.userId;
-    const streamName = `${this.category}-${userId}`;
+    const deviceId = message.deviceId || message.deviceDto.deviceId;
+    const streamName = `${this.category}-${deviceId}`;
     const type = event.constructor.name;
     try {
       await this.eventStore.client.writeEvent(streamName, type, event);

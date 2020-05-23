@@ -11,8 +11,8 @@ const configs = {
     DEV: env === envDevelopmentName,
     // General
     NAME: process.env.APP_NAME || 'nestjs-es',
-    TITLE: process.env.APP_TITLE || 'Users',
-    DESCRIPTION: process.env.APP_DESCRIPTION || 'Users API Microservice',
+    TITLE: process.env.APP_TITLE || 'Devices',
+    DESCRIPTION: process.env.APP_DESCRIPTION || 'Devices API Microservice',
     // API
     PREFIX: process.env.APP_PREFIX || 'v1',
     VERSION: process.env.APP_VERSION || '1.0',

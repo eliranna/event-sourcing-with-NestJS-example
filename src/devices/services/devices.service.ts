@@ -7,9 +7,9 @@ import { CreateDeviceCommand } from '../commands/create-device.command';
 export class DevicesService {
   constructor(private readonly commandBus: CommandBus) {}
 
-  async createDevice(user: DeviceDto) {
+  async createDevice(device: DeviceDto) {
     return await this.commandBus.execute(
-      new CreateDeviceCommand(user),
+      new CreateDeviceCommand(device),
     );
   }
 
