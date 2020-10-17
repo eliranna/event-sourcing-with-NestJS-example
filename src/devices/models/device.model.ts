@@ -12,7 +12,7 @@ export class Device extends AggregateRoot {
     this.data = data;
   }
 
-  createDevice() {
+  create() {
     this.apply(new DeviceCreatedEvent(this.data));
   }
 }
