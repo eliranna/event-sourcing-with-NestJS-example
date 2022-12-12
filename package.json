@@ -22,10 +22,10 @@
   },
   "dependencies": {
     "@nestjs/common": "^5.1.0",
-    "@nestjs/core": "^5.1.0",
+    "@nestjs/core": "^9.2.1",
     "@nestjs/cqrs": "^5.1.1",
-    "@nestjs/platform-express": "^7.0.0",
-    "@nestjs/swagger": "^2.5.1",
+    "@nestjs/platform-express": "^9.2.1",
+    "@nestjs/swagger": "^6.1.4",
     "fastify-swagger": "^0.15.1",
     "class-validator": "^0.12.2",
     "dotenv": "^8.2.0",
